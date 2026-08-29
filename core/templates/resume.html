@@ -1,0 +1,388 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Abhishek Sharma - Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      padding: 20px 0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .cv-sheet {
+      width: 210mm;
+      height: 297mm;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+      position: relative;
+    }
+    @media print {
+      body {
+        background: transparent;
+        padding: 0;
+      }
+      .cv-sheet {
+        box-shadow: none;
+        width: 210mm;
+        height: 297mm;
+      }
+    }
+
+    /* TOP HEADER SECTION */
+    .top-header {
+      display: flex;
+      width: 100%;
+      height: 275px;
+    }
+    .top-left-photo {
+      width: 38%;
+      height: 100%;
+      background-color: #e5e5e5;
+    }
+    .top-left-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      filter: grayscale(100%);
+      display: block;
+    }
+    .top-right-name {
+      width: 62%;
+      padding: 45px 45px 20px 45px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .top-right-name h1 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #1a1a1a;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .top-right-name h2 {
+      font-size: 15px;
+      font-weight: 500;
+      color: #4a4a4a;
+      margin-bottom: 22px;
+    }
+    .divider-line {
+      width: 45px;
+      height: 3px;
+      background-color: #111111;
+      margin-bottom: 18px;
+    }
+    .section-title {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #111111;
+      margin-bottom: 10px;
+    }
+    .summary-body {
+      font-size: 11px;
+      line-height: 1.6;
+      color: #444444;
+      font-weight: 400;
+      text-align: justify;
+    }
+
+    /* MAIN TWO-COLUMN BODY */
+    .main-container {
+      display: flex;
+      width: 100%;
+      flex: 1;
+      padding-top: 15px;
+    }
+    .col-left {
+      width: 38%;
+      padding: 10px 30px 20px 45px;
+    }
+    .col-right {
+      width: 62%;
+      padding: 10px 45px 20px 45px;
+    }
+
+    /* LEFT COLUMN STYLES */
+    .left-block {
+      margin-bottom: 24px;
+    }
+    .contact-row {
+      display: flex;
+      align-items: center;
+      font-size: 11px;
+      color: #333333;
+      margin-bottom: 8px;
+      font-weight: 400;
+    }
+    .contact-row i {
+      width: 16px;
+      font-size: 12px;
+      margin-right: 10px;
+      color: #111;
+    }
+    .contact-row a {
+      color: #333333;
+      text-decoration: underline;
+    }
+    .bullet-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    .bullet-list li {
+      font-size: 11px;
+      color: #333333;
+      margin-bottom: 6px;
+      position: relative;
+      padding-left: 14px;
+      font-weight: 400;
+    }
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #111;
+      font-size: 13px;
+      top: -1px;
+    }
+    .edu-heading {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #111111;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+    .edu-years {
+      font-size: 11px;
+      color: #555555;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+    .edu-desc {
+      font-size: 10.5px;
+      color: #444444;
+      line-height: 1.4;
+    }
+
+    /* RIGHT COLUMN STYLES */
+    .exp-item {
+      margin-bottom: 18px;
+    }
+    .exp-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+    .exp-role-title {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #111111;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .exp-timeline {
+      font-size: 11px;
+      font-weight: 600;
+      color: #333333;
+    }
+    .exp-company-sub {
+      font-size: 11px;
+      font-weight: 600;
+      color: #444444;
+      margin-bottom: 4px;
+    }
+    .exp-bullets {
+      list-style: none;
+      padding-left: 0;
+    }
+    .exp-bullets li {
+      font-size: 10.5px;
+      line-height: 1.45;
+      color: #444444;
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 3px;
+    }
+    .exp-bullets li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #222;
+      font-size: 12px;
+      top: -1px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="cv-sheet">
+  <!-- TOP HEADER (PHOTO + NAME & SUMMARY) -->
+  <div class="top-header">
+    <div class="top-left-photo">
+      <img src="{% static 'core/myphoto.png' %}" onerror="this.src='/static/core/myphoto.png';" alt="Abhishek Sharma">
+    </div>
+    <div class="top-right-name">
+      <h1>Abhishek Sharma</h1>
+      <h2>Python / Django Backend Developer</h2>
+      
+      <div class="divider-line"></div>
+      
+      <div class="section-title">SUMMARY</div>
+      <p class="summary-body">
+        Detail-oriented Python & Django Backend Developer with practical foundation in RESTful API development, database architecture, and server-side logic. Proven ability to design secure, scalable web workflows and integrate dynamic user authentication. Analytical problem-solver dedicated to writing clean, maintainable backend code.
+      </p>
+    </div>
+  </div>
+
+  <!-- MAIN TWO-COLUMN CONTENT -->
+  <div class="main-container">
+    
+    <!-- LEFT SIDEBAR -->
+    <div class="col-left">
+      
+      <!-- CONTACT -->
+      <div class="left-block">
+        <div class="section-title">CONTACT:</div>
+        <div class="contact-row">
+          <i class="fa-solid fa-phone"></i> +91 7018874881
+        </div>
+        <div class="contact-row">
+          <i class="fa-solid fa-envelope"></i> <a href="mailto:Mex3yoursis@gmail.com">Mex3yoursis@gmail.com</a>
+        </div>
+        <div class="contact-row">
+          <i class="fa-solid fa-location-dot"></i> Kangra, Himachal Pradesh
+        </div>
+        <div class="contact-row">
+          <i class="fa-brands fa-github"></i> <a href="https://github.com">github.com/AbhishekSharma</a>
+        </div>
+      </div>
+
+      <!-- SKILLS -->
+      <div class="left-block">
+        <div class="section-title">SKILLS:</div>
+        <ul class="bullet-list">
+          <li>Python & Django</li>
+          <li>RESTful APIs (DRF)</li>
+          <li>Flask Framework</li>
+          <li>SQL Database Design</li>
+          <li>HTML5 & CSS3</li>
+          <li>JavaScript Basics</li>
+          <li>Bootstrap UI</li>
+          <li>Git & Version Control</li>
+          <li>Problem-Solving</li>
+        </ul>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="left-block">
+        <div class="section-title">EDUCATION:</div>
+        <div class="edu-heading">LOVELY PROFESSIONAL UNIVERSITY</div>
+        <div class="edu-years">2023 – 2026</div>
+        <div class="edu-desc">Bachelor of Science in Information Technology</div>
+
+        <div class="edu-heading" style="margin-top: 10px;">HIGHER SECONDARY (12TH)</div>
+        <div class="edu-years">2021 – 2022</div>
+        <div class="edu-desc">Science Stream (Physics, Chemistry, Biology)</div>
+      </div>
+
+      <!-- LANGUAGE -->
+      <div class="left-block">
+        <div class="section-title">LANGUAGE:</div>
+        <ul class="bullet-list">
+          <li>Hindi (Native)</li>
+          <li>English (Professional)</li>
+          <li>Punjabi</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- RIGHT SIDEBAR (EXPERIENCE / PROJECTS) -->
+    <div class="col-right">
+      <div class="section-title" style="margin-bottom: 12px;">EXPERIENCE & PROJECTS:</div>
+
+      <!-- PROJECT 1 -->
+      <div class="exp-item">
+        <div class="exp-header-row">
+          <span class="exp-role-title">BACKEND DEVELOPER (CMS PLATFORM)</span>
+          <span class="exp-timeline">2026</span>
+        </div>
+        <div class="exp-company-sub">Multi-Author Role-Based Content System</div>
+        <ul class="exp-bullets">
+          <li>Engineered dynamic role-based access control (Admin, Editor, Reader) using Django Auth.</li>
+          <li>Structured relational schema for post publishing, categorization, and comment moderation.</li>
+          <li>Optimized ORM queries to streamline database transactions and prevent query bottlenecks.</li>
+        </ul>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="exp-item">
+        <div class="exp-header-row">
+          <span class="exp-role-title">API DEVELOPER (TASK ENGINE)</span>
+          <span class="exp-timeline">2026</span>
+        </div>
+        <div class="exp-company-sub">RESTful Automation & Workflow Tracker</div>
+        <ul class="exp-bullets">
+          <li>Developed complete CRUD REST endpoints utilizing Django REST Framework (DRF).</li>
+          <li>Integrated JWT authentication and custom payload validation for secure client requests.</li>
+          <li>Implemented clean API pagination and filter backends for asynchronous task operations.</li>
+        </ul>
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div class="exp-item">
+        <div class="exp-header-row">
+          <span class="exp-role-title">SECURITY MODULE DEVELOPER</span>
+          <span class="exp-timeline">2025 – 2026</span>
+        </div>
+        <div class="exp-company-sub">Security Risk & Breach Incident Portal</div>
+        <ul class="exp-bullets">
+          <li>Built centralized event-logging backend to categorize breach alerts and audit data trails.</li>
+          <li>Designed structured analytics summaries within custom Django Admin views.</li>
+        </ul>
+      </div>
+
+      <!-- PROJECT 4 -->
+      <div class="exp-item">
+        <div class="exp-header-row">
+          <span class="exp-role-title">FULL-STACK DEVELOPER</span>
+          <span class="exp-timeline">2025 – 2026</span>
+        </div>
+        <div class="exp-company-sub">Dynamic Personal Portfolio & Showcase</div>
+        <ul class="exp-bullets">
+          <li>Developed responsive web platform backed by Django template engine and SQLite database.</li>
+          <li>Created administrative UI allowing real-time project insertion without code modification.</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

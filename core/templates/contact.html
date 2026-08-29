@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    /* Contact Section Styling */
+    .contact-wrapper {
+        padding: 80px 0;
+        background-color: var(--bg-color);
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+    }
+    
+    .contact-card {
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+        border: 1px solid #eaeaea;
+        overflow: hidden;
+    }
+
+    /* Left Side - Dark Info Panel */
+    .contact-info-panel {
+        background: #111111;
+        color: #ffffff;
+        padding: 60px 50px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .contact-info-panel h3 {
+        font-size: 32px;
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 20px;
+    }
+
+    .contact-info-panel p {
+        color: #a1a1aa;
+        font-size: 15px;
+        line-height: 1.7;
+        font-weight: 500;
+        margin-bottom: 40px;
+    }
+
+    .info-block {
+        margin-bottom: 30px;
+    }
+    
+    .info-label {
+        color: #666666;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-weight: 800;
+        margin-bottom: 8px;
+    }
+    
+    .info-value {
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+    
+    .info-value:hover {
+        color: var(--primary-blue);
+    }
+
+    /* Right Side - Form Panel */
+    .contact-form-panel {
+        padding: 60px 50px;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    .form-group label {
+        display: block;
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #111;
+        margin-bottom: 10px;
+    }
+
+    /* Overriding Django Default Inputs */
+    .form-group input, 
+    .form-group textarea {
+        width: 100%;
+        padding: 16px 20px;
+        background: #f7f8f9;
+        border: 1px solid #eaeaea;
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 15px;
+        color: #111;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .form-group input:focus, 
+    .form-group textarea:focus {
+        background: #ffffff;
+        border-color: var(--primary-blue);
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        outline: none;
+    }
+
+    .form-group textarea {
+        min-height: 160px;
+        resize: vertical;
+    }
+
+    .social-icon-light {
+        color: #ffffff;
+        font-size: 20px;
+        margin-right: 20px;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+    
+    .social-icon-light:hover {
+        color: var(--primary-blue);
+        transform: translateY(-3px);
+        display: inline-block;
+    }
+</style>
+
+<div class="contact-wrapper">
+    <div class="container">
+        
+        <div class="text-center mb-5" data-aos="fade-up">
+            <div class="badge-tag">
+                <i class="fa-solid fa-asterisk"></i> GET IN TOUCH
+            </div>
+            <h1 style="font-size: clamp(40px, 5vw, 56px);">Let's Build Something Great.</h1>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="row g-0">
+                        
+                        <!-- Left Panel: Contact Info -->
+                        <div class="col-md-5">
+                            <div class="contact-info-panel">
+                                <h3>Contact Info</h3>
+                                <p>I am currently available for internships and freelance projects. Reach out if you have an exciting idea or just want to say hi.</p>
+                                
+                                <div class="info-block">
+                                    <div class="info-label">Email Address</div>
+                                    <a href="mailto:Mex3yoursis@gmail.com" class="info-value">Mex3yoursis@gmail.com</a>
+                                </div>
+                                
+                                <div class="info-block">
+                                    <div class="info-label">Phone Number</div>
+                                    <a href="tel:+917018874881" class="info-value">+91 7018874881</a>
+                                </div>
+
+                                <div class="info-block mt-4">
+                                    <div class="info-label mb-3">Social Profiles</div>
+                                    <div>
+                                        <a href="https://github.com" target="_blank" class="social-icon-light"><i class="fa-brands fa-github"></i></a>
+                                        <a href="https://linkedin.com" target="_blank" class="social-icon-light"><i class="fa-brands fa-linkedin"></i></a>
+                                        <a href="https://twitter.com" target="_blank" class="social-icon-light"><i class="fa-brands fa-x-twitter"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Panel: The Form -->
+                        <div class="col-md-7">
+                            <div class="contact-form-panel">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    
+                                    <!-- Manually rendering fields for full control and English labels -->
+                                    <div class="form-group">
+                                        <label for="{{ form.name.id_for_label }}">Full Name</label>
+                                        {{ form.name }}
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="{{ form.email.id_for_label }}">Email Address</label>
+                                        {{ form.email }}
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="{{ form.message.id_for_label }}">Project Details / Message</label>
+                                        {{ form.message }}
+                                    </div>
+                                    
+                                    <button type="submit" class="btn-pill-dark w-100 mt-2" style="border-radius: 8px; padding: 16px;">
+                                        Send Message <i class="fa-solid fa-paper-plane ms-2"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

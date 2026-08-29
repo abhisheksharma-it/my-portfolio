@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Abhishek Sharma - Portfolio</title>
+
+   
+
+    <!-- Manrope Font -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* Navbar ke pichhe content na chhupe isliye */
+}
+        body { font-family: 'Manrope', sans-serif; background-color: #f5f5f5; color: #111; margin: 0; }
+
+       
+
+        /* Header Styling */
+
+        header {
+
+            background: #f5f5f5;
+
+            padding: 20px 5%;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            position: sticky; /* Sticky lagaya hai taaki beech mein na tootey */
+
+            top: 0;
+
+            z-index: 100;
+
+            border-bottom: 1px solid #e5e5e5;
+
+        }
+
+       .logo { font-size: 26px; font-weight: 800; color: #111; text-decoration: none; }
+
+    /* Yahan naya paste kar de */
+    nav a {
+        color: #111111 !important;
+        text-decoration: none !important;
+        font-size: 15px;
+        font-weight: 700;
+        margin: 0 18px;
+        transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+        color: #3b82f6 !important;
+    }
+
+        .logo { font-size: 26px; font-weight: 800; color: #111; text-decoration: none; }
+
+        /* Right side container */
+
+        .header-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+        }
+
+
+
+        .contact-info { text-align: right; font-size: 12px; font-weight: 600; color: #555; line-height: 1.4; }
+
+       
+
+        .social-links-header a {
+
+            font-size: 20px;
+
+            color: #555;
+
+            margin-left: 10px;
+
+            transition: 0.3s;
+
+        }
+
+        .social-links-header a:hover { color: #3b82f6; transform: scale(1.1); }
+
+
+
+        /* Footer */
+
+        footer { padding: 60px 5%; background: #f5f5f5; border-top: 1px solid #e5e5e5; }
+
+        .footer-icon { color: #666; margin-left: 10px; font-size: 20px; }
+
+        .footer-icon:hover { color: #3b82f6; }
+
+    /* Modern Creative Mobile UI (Header & Footer) */
+/* Header Right Desktop */
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    .social-links-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    /* Mobile View Fix: Single Line Contact + Single Line 3 Icons */
+    @media (max-width: 768px) {
+        header {
+            padding: 10px 8px !important;
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+        }
+
+        .logo {
+            font-size: 15px !important;
+            white-space: nowrap !important;
+        }
+
+        header nav {
+            display: flex !important;
+            align-items: center !important;
+            gap: 4px !important;
+            white-space: nowrap !important;
+        }
+
+        header nav a {
+            margin: 0 !important;
+            font-size: 10.5px !important;
+            padding: 2px 3px !important;
+            white-space: nowrap !important;
+        }
+
+        .header-right {
+            display: flex !important;
+            align-items: center !important;
+            gap: 5px !important;
+            white-space: nowrap !important;
+        }
+
+        .contact-info {
+            font-size: 7.5px !important;
+            line-height: 1.1 !important;
+            text-align: right !important;
+        }
+
+        .social-links-header {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            gap: 4px !important;
+        }
+
+        .social-links-header a {
+            font-size: 11px !important;
+            margin: 0 !important;
+        }
+    }
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+    <!-- Header -->
+
+ <header>
+    <a href="{% url 'home' %}" class="logo">Abhishek Sharma</a>
+
+    <nav>
+        <a href="{% url 'home' %}#about">About</a>
+        <a href="{% url 'home' %}#services">Services</a>
+        <a href="{% url 'home' %}#skills">Skills</a>
+        <a href="{% url 'home' %}#education">Education</a>
+        <a href="{% url 'contact' %}">Contact</a>
+    </nav>
+
+    <div class="header-right">
+        <div class="contact-info">
+            <div>PHONE: +91 7018874881</div>
+            <div>EMAIL: Mex3yoursis@gmail.com</div>
+        </div>
+        <div class="social-links-header">
+            <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+    </div>
+</header>
+    <!-- Main Content -->
+
+    <div style="padding-top: 20px;">
+
+        {% block content %}{% endblock %}
+
+    </div>
+
+
+
+    <!-- Footer (Contact ke aage icons) -->
+
+    <footer>
+    <div class="container">
+        <div class="row align-items-center">
+            
+            <!-- Column 1: Brand Info -->
+            <div class="col-md-3">
+                <h5 class="fw-bold mb-2">Abhishek Sharma</h5>
+                <p style="color: #666; font-size: 14px; font-weight: 500;">Building reliable solutions with a focus on performance & clean code.</p>
+            </div>
+            
+            <!-- Column 2: Quick Links (Sirf Ek Baar) -->
+            <div class="col-md-3">
+                <h6 class="fw-bold mb-3">About Me</h6>
+                <a href="{% url 'home' %}#about" style="color: #666; text-decoration: none; font-size: 14px; font-weight: 500; display: block; margin-bottom: 8px;">About</a>
+                <a href="{% url 'home' %}#services" style="color: #666; text-decoration: none; font-size: 14px; font-weight: 500;">Services</a>
+            </div>
+
+            <!-- Column 3: Contact & Action -->
+            <div class="col-md-3">
+                <h6 class="fw-bold mb-3">Contact Me</h6>
+                <div class="mb-2">
+                    <a href="https://github.com" target="_blank" style="color: #333; font-size: 18px; margin-right: 15px;"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://linkedin.com" target="_blank" style="color: #333; font-size: 18px; margin-right: 15px;"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://twitter.com" target="_blank" style="color: #333; font-size: 18px;"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+
+            <!-- Column 4: Call to Action Button -->
+            <div class="col-md-3 text-md-end">
+                <a href="{% url 'contact' %}" class="btn btn-primary rounded-pill px-4 py-2" style="font-weight: 600; font-size: 14px;">Request a Call</a>
+            </div>
+
+        </div>
+        
+        <hr style="border-color: #eaeaea; margin: 40px 0 20px 0;">
+        
+        <div class="text-center" style="color: #888; font-size: 13px; font-weight: 500;">
+            © 2026 Abhishek Sharma. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+    AOS.init();
+
+</script>
+<!-- ============================================== -->
+    <!-- AI CHATBOT CODE START (Paste above </body>) -->
+    <!-- ============================================== -->
+   <style>
+        #ai-chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999999 !important; /* Z-index badha diya taaki sabse upar rahe */
+            font-family: 'Inter', sans-serif;
+        }
+        .chat-btn {
+            background-color: #3b82f6 !important; /* Direct Blue Color */
+            color: #ffffff !important; /* White Icon */
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .chat-btn:hover {
+            transform: scale(1.1);
+        }
+        .chat-box {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 320px;
+            background: #ffffff !important;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            border: 1px solid #eaeaea;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+        }
+        .chat-box.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .chat-header {
+            background: #111111 !important;
+            color: #ffffff !important;
+            padding: 16px 20px;
+            font-size: 15px;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .close-btn {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .chat-body {
+            height: 320px;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f7f8f9 !important;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .bot-message, .user-message {
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 13.5px;
+            max-width: 85%;
+            word-wrap: break-word;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+        .bot-message {
+            background: #ffffff !important;
+            color: #111111 !important;
+            align-self: flex-start;
+            border: 1px solid #eaeaea;
+            border-bottom-left-radius: 2px;
+        }
+        .user-message {
+            background: #3b82f6 !important; /* Direct Blue Color */
+            color: #ffffff !important;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+        .chat-input-area {
+            display: flex;
+            border-top: 1px solid #eaeaea;
+            background: #ffffff !important;
+        }
+        .chat-input-area input {
+            flex: 1;
+            padding: 16px 20px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            font-weight: 500;
+            background: transparent;
+            color: #111;
+        }
+        .chat-input-area button {
+            background: transparent;
+            border: none;
+            padding: 0 20px;
+            color: #3b82f6 !important;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .chat-input-area button:hover {
+            color: #111 !important;
+        }
+    </style>
+
+    <div id="ai-chat-widget">
+        <!-- Floating Button -->
+        <button id="chat-toggle" class="chat-btn">
+            <i class="fa-solid fa-robot"></i>
+        </button>
+        
+        <!-- Chat Window -->
+        <div id="chat-box" class="chat-box">
+            <div class="chat-header">
+                <div><i class="fa-solid fa-robot me-2"></i> Abhishek's AI</div>
+                <button id="close-chat" class="close-btn">&times;</button>
+            </div>
+            <div class="chat-body" id="chat-body">
+                <div class="bot-message">Hi there! 👋 I am Abhishek's AI assistant. You can ask me about his skills, projects, or contact info.</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Ask me something..." autocomplete="off" />
+                <button id="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+  <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const chatToggle = document.getElementById("chat-toggle");
+            const chatBox = document.getElementById("chat-box");
+            const closeChat = document.getElementById("close-chat");
+            const sendBtn = document.getElementById("send-btn");
+            const chatInput = document.getElementById("chat-input");
+            const chatBody = document.getElementById("chat-body");
+
+            // Open/Close Chat
+            chatToggle.addEventListener("click", () => chatBox.classList.toggle("active"));
+            closeChat.addEventListener("click", () => chatBox.classList.remove("active"));
+
+            function appendMessage(text, sender) {
+                const msgDiv = document.createElement("div");
+                msgDiv.className = sender === "user" ? "user-message" : "bot-message";
+                msgDiv.textContent = text;
+                chatBody.appendChild(msgDiv);
+                chatBody.scrollTop = chatBody.scrollHeight; 
+            }
+
+            // ==========================================
+            // SMART GPT-LIKE REGEX BRAIN
+            // ==========================================
+            function getBotResponse(input) {
+                let text = input.toLowerCase();
+
+                // 1. Handle Abuse / Toxicity
+                if (text.match(/fuck|shit|bitch|dumb|stupid|asshole|idiot/)) {
+                    return "Let's keep it professional! 😅 I'm just a virtual assistant here to help you learn about Abhishek's amazing developer skills.";
+                }
+
+                // 2. Identity Queries (Who is Abhishek?)
+                if (text.match(/who is abhishek|about abhishek|tell me about him|who are you talking about/)) {
+                    return "Abhishek Sharma is a dedicated Python/Django developer. He specializes in building scalable backend systems, REST APIs, and modern web applications.";
+                }
+
+                // 3. Bot Identity (Who are you?)
+                if (text.match(/who are you|are you ai|are you real|what are you/)) {
+                    return "I am a custom AI assistant built into this portfolio. My job is to answer your questions about Abhishek's work and experience!";
+                }
+
+                // 4. Greetings
+                if (text.match(/^(hi|hello|hey|yo|sup|namaste)\b/)) {
+                    return "Hello there! 👋 I can tell you about Abhishek's skills, projects, or how to contact him. What would you like to know?";
+                }
+
+                // 5. Skills & Tech Stack
+                if (text.match(/skill|tech|stack|language|framework|know|tool/)) {
+                    return "Abhishek's core stack includes Python, Django, RESTful APIs (DRF), SQL databases, and Frontend technologies like HTML5, CSS3, and Bootstrap.";
+                }
+
+                // 6. Projects & Experience
+                if (text.match(/project|work|portfolio|built|experience/)) {
+                    return "He has built several robust applications, including a Role-Based Multi-Author CMS, a RESTful API Task Tracker, and a Security Incident Portal. You can check the 'Projects' section for details!";
+                }
+
+                // 7. Education
+                if (text.match(/edu|study|degree|college|university|lpu|graduate/)) {
+                    return "He is pursuing a B.Sc in Information Technology from Lovely Professional University (2023 - 2026).";
+                }
+
+                // 8. Contact & Hiring
+                if (text.match(/contact|email|phone|call|hire|reach/)) {
+                    return "You can reach Abhishek directly at Mex3yoursis@gmail.com or call him at +91 7018874881. He is currently open to exciting opportunities!";
+                }
+
+                // 9. Location
+                if (text.match(/where|location|city|country|live/)) {
+                    return "Abhishek is based in India and is available for remote work and collaborations.";
+                }
+
+                // Fallback (If the bot doesn't understand)
+                return "I'm still learning! 🤔 While I might not understand everything, you can ask me specifically about Abhishek's 'skills', 'projects', 'education', or 'contact details'.";
+            }
+
+            // Handle Send
+           // NAYA ASLI AI SEND MESSAGE FUNCTION
+            function sendMessage() {
+                const text = chatInput.value.trim();
+                if (text === "") return;
+                
+                appendMessage(text, "user");
+                chatInput.value = "";
+                
+                // User ko lage ki AI type kar raha hai
+                const typingId = "typing-" + Date.now();
+                const typingDiv = document.createElement("div");
+                typingDiv.className = "bot-message";
+                typingDiv.id = typingId;
+                typingDiv.textContent = "Typing...";
+                chatBody.appendChild(typingDiv);
+                chatBody.scrollTop = chatBody.scrollHeight;
+
+                // Django Backend ko request bhej rahe hain
+                fetch('/api/chatbot/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: text })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById(typingId).remove(); // Typing hatao
+                    appendMessage(data.reply, "bot"); // Gemini ka reply dikhao
+                })
+                .catch(error => {
+                    document.getElementById(typingId).remove();
+                    appendMessage("Oops! Network error. Cannot reach the AI brain.", "bot");
+                });
+            }
+
+            // Events
+            sendBtn.addEventListener("click", sendMessage);
+            chatInput.addEventListener("keypress", function(e) {
+                if (e.key === "Enter") sendMessage();
+            });
+        });
+    </script>
+    <!-- AI CHATBOT CODE END -->
+</body>
+
+</html> 
