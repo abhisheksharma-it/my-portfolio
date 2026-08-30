@@ -21,18 +21,19 @@ def contact(request):
             # Success message logic yahan add karo
     else:
         form = ContactForm()
-    return render(request, 'contact.html', {'form': form})
-
-    # Gemini AI Chatbot API
 import json
+import os
+from dotenv import load_dotenv
 from google import genai
-from google.genai import types  # Ye hona zaroori hai
+from google.genai import types
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-# NAYA GEMINI SETUP
-client = genai.Client(api_key="AQ.Ab8RN6KR0gNc1d2IYltxFqFLsD3zU8GSo7EaEIx0hLHhod3w3Q") # YAHAN APNI KEY DAAL LENA
+# .env file se environment variables load karo
+load_dotenv()
 
+# NAYA GEMINI SETUP (Key secret rahegi)
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 @csrf_exempt
 def gemini_chatbot_api(request):
     if request.method == 'POST':
