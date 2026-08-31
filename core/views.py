@@ -35,13 +35,9 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/#contact')  # Form submit hone ke baad homepage contact section par redirect
-    else:
-        form = ContactForm()
-
-    # GET Request aane par response return karna zaroori hai
-    return render(request, 'contact.html', {'form': form})
-
+            return redirect('/#contact')
+    # GET request ya invalid form hone par wapas home ke contact section par bhej do
+    return redirect('/#contact')
 
 @csrf_exempt
 def gemini_chatbot_api(request):
