@@ -1,39 +1,48 @@
-from django.shortcuts import render
+import json
+import os
+from django.shortcuts import render, redirect
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from dotenv import load_dotenv
+from google import genai
+from google.genai import types
+
 from .models import Project
+from .forms import ContactForm
+
+# .env file se environment variables load karo
+load_dotenv()
+
+# GEMINI SETUP
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+
 
 def home(request):
     projects = Project.objects.all()
     return render(request, 'home.html', {'projects': projects})
 
+
 def about(request):
     return render(request, 'about.html')
+
 
 def resume(request):
     return render(request, 'resume.html')
 
-from .forms import ContactForm
 
 def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            # Success message logic yahan add karo
+            return redirect('/#contact')  # Form submit hone ke baad homepage contact section par redirect
     else:
         form = ContactForm()
-import json
-import os
-from dotenv import load_dotenv
-from google import genai
-from google.genai import types
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
 
-# .env file se environment variables load karo
-load_dotenv()
+    # GET Request aane par response return karna zaroori hai
+    return render(request, 'contact.html', {'form': form})
 
-# NAYA GEMINI SETUP (Key secret rahegi)
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+
 @csrf_exempt
 def gemini_chatbot_api(request):
     if request.method == 'POST':
@@ -44,7 +53,7 @@ def gemini_chatbot_api(request):
             if not user_message:
                 return JsonResponse({'reply': 'Please say something!'})
 
-            # AI ka Dimaag (Rules alag se set kiye hain)
+            # AI Rules
             bot_rules = """
             You are a smart, professional, witty and friendly AI assistant for Abhishek Sharma's portfolio website. 
             Answer naturally like a human. Keep answers under 3-4 sentences. Do not use markdown.
@@ -55,13 +64,12 @@ def gemini_chatbot_api(request):
             - Contact: Email is Mex3yoursis@gmail.com, Phone is +91 7018874881.
             """
 
-            # Sahi tarika: System instructions ko config mein daalna
             response = client.models.generate_content(
-                model='gemini-3.6-flash', 
-                contents=user_message,  # Yahan sirf user ka message jayega
+                model='gemini-2.5-flash', 
+                contents=user_message,
                 config=types.GenerateContentConfig(
-                    system_instruction=bot_rules, # Rules yahan set honge
-                    temperature=0.7 # Wapas smart aur creative banayega
+                    system_instruction=bot_rules,
+                    temperature=0.7
                 )
             )
             
