@@ -211,4 +211,21 @@
     </div>
 </div>
 
+<!-- SweetAlert2 Popup CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+{% if messages %}
+    {% for message in messages %}
+        <script>
+            Swal.fire({
+                title: "{% if message.tags == 'error' %}Error!{% else %}Success!{% endif %}",
+                text: "{{ message }}",
+                icon: "{% if message.tags == 'error' %}error{% else %}success{% endif %}",
+                confirmButtonColor: "#000000",
+                confirmButtonText: "OK"
+            });
+        </script>
+    {% endfor %}
+{% endif %}
+
 {% endblock %}
